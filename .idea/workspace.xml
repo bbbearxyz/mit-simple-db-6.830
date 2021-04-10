@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="68aa4a9d-da77-4020-8c6d-7e5aecb48483" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/bin/depcache/dependencies.txt" beforeDir="false" afterPath="$PROJECT_DIR$/bin/depcache/dependencies.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/common/Catalog.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/common/Catalog.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/common/Permissions.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/common/Permissions.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/Aggregate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/Aggregate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/Filter.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/Filter.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/IntegerAggregator$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/IntegerAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/IntegerAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/Join.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/Join.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/JoinPredicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/JoinPredicate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/Predicate.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/Predicate.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/SeqScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/SeqScan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/StringAggregator$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/execution/StringAggregator.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/execution/StringAggregator.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/BufferPool.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/BufferPool.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapFile$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapPage$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapPage.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapPage.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapPageId.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/HeapPageId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/RecordId.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/RecordId.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/Tuple$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/Tuple.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/Tuple.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/TupleDesc$1.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/src/simpledb/storage/TupleDesc.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/src/simpledb/storage/TupleDesc.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/AggregateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/AggregateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest$HeapFileDuplicates.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest$HeapFileDuplicates.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/BufferPoolWriteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/HeapPageWriteTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/HeapPageWriteTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/JoinTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/JoinTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$CreateHeapFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$LockGrabber.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$MockScan.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil$SkeletonFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TestUtil.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/TupleDescTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/TupleDescTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/AggregateTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/AggregateTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/ScanTest$1InstrumentedHeapFile.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/ScanTest$1InstrumentedHeapFile.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/ScanTest.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/ScanTest.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/test/simpledb/systemtest/SystemTestUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/bin/test/simpledb/systemtest/SystemTestUtil.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="mavenHome" value="$APPLICATION_HOME_DIR$/plugins/maven/lib/maven3" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="1qyNWrd3EcpF1ZLJ3TsYJLd0iMK" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="nodejs_package_manager_path" value="npm" />
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="68aa4a9d-da77-4020-8c6d-7e5aecb48483" name="Default Changelist" comment="" />
+      <created>1618047904738</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1618047904738</updated>
+      <workItem from="1618047905787" duration="151000" />
+      <workItem from="1618048324476" duration="4000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+</project>
