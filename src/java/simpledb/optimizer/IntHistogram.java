@@ -2,9 +2,27 @@ package simpledb.optimizer;
 
 import simpledb.execution.Predicate;
 
+import java.awt.*;
+import java.util.ArrayList;
+
 /** A class to represent a fixed-width histogram over a single integer-based field.
  */
 public class IntHistogram {
+
+    // intArray
+    int[] intArr;
+
+    // min
+    int min;
+
+    // max
+    int max;
+
+    // all
+    int all;
+
+    // width
+    int width;
 
     /**
      * Create a new IntHistogram.
@@ -24,6 +42,15 @@ public class IntHistogram {
      */
     public IntHistogram(int buckets, int min, int max) {
     	// some code goes here
+        intArr = new int[buckets];
+        this.min = min;
+        this.max = max;
+        this.all = 0;
+        if ((max - min + 1) % buckets == 0) {
+            this.width = Integer.max(1, (max - min + 1) / buckets);
+        } else {
+            this.width = (max - min + 1) / buckets + 1;
+        }
     }
 
     /**
@@ -32,6 +59,8 @@ public class IntHistogram {
      */
     public void addValue(int v) {
     	// some code goes here
+        intArr[(v - min) / width] ++;
+        all ++;
     }
 
     /**
@@ -45,9 +74,54 @@ public class IntHistogram {
      * @return Predicted selectivity of this particular operator and value
      */
     public double estimateSelectivity(Predicate.Op op, int v) {
-
     	// some code goes here
-        return -1.0;
+        double res = 0;
+        if (op == Predicate.Op.EQUALS) {
+            if (v < min || v > max) return 0;
+            res = (double) (intArr[(v - min) / width]) / (width * all);
+        } else if (op == Predicate.Op.NOT_EQUALS) {
+            if (v < min || v > max) return 1;
+            res = 1 - (double) (intArr[(v - min) / width]) / (width * all);
+        } else if (op == Predicate.Op.GREATER_THAN) {
+            if (v > max) return 0;
+            if (v < min) return 1;
+            int items = 0;
+            for (int i = (v - min) / width + 1; i < intArr.length; i ++ ) {
+                items += intArr[i];
+            }
+            res = (double) items / all;
+            res += (double) (intArr[(v - min) / width]) / (width * all) * ((v - min) / width * width + width - v);
+        } else if (op == Predicate.Op.GREATER_THAN_OR_EQ) {
+            if (v > max) return 0;
+            if (v < min) return 1;
+            int items = 0;
+            for (int i = (v - min) / width + 1; i < intArr.length; i ++ ) {
+                items += intArr[i];
+            }
+            res = (double) items / all;
+            res += (double) (intArr[(v - min) / width]) / (width * all) * ((v - min) / width * width + width - v) + (double) (intArr[(v - min) / width]) / (width * all);
+        } else if (op == Predicate.Op.LESS_THAN) {
+            if (v < min) return 0;
+            if (v > max) return 1;
+            int items = 0;
+            for (int i = 0; i < (v - min) / width; i ++ ) {
+                items += intArr[i];
+            }
+            System.out.println(items);
+            System.out.println(all);
+            res = (double) items / all;
+            res += (double) (intArr[(v - min) / width]) / (width * all) * (v - (v - min) / width * width);
+        } else if (op == Predicate.Op.LESS_THAN_OR_EQ) {
+            if (v < min) return 0;
+            if (v > max) return 1;
+            int items = 0;
+            for (int i = 0; i < (v - min) / width; i ++ ) {
+                items += intArr[i];
+            }
+            res = (double) items / all;
+            res += (double) (intArr[(v - min) / width]) / (width * all) * (v - (v - min) / width * width) + (double) (intArr[(v - min) / width]) / (width * all);
+        }
+        return Double.min(res, 1);
     }
     
     /**
@@ -69,6 +143,14 @@ public class IntHistogram {
      */
     public String toString() {
         // some code goes here
-        return null;
+        String res = "the initHistogram is ";
+        for (int i = 0; i < intArr.length; i ++ ) {
+            res += intArr[i];
+            res += " ";
+        }
+        res = res + "min is " + min + " max is " + max;
+        return res;
     }
+
+
 }

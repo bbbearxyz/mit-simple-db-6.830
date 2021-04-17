@@ -9,6 +9,7 @@ import java.util.*;
 
 import javax.swing.*;
 import javax.swing.tree.*;
+import javax.xml.crypto.Data;
 
 /**
  * The JoinOptimizer class is responsible for ordering a series of joins
@@ -116,7 +117,7 @@ public class JoinOptimizer {
             // HINT: You may need to use the variable "j" if you implemented
             // a join algorithm that's more complicated than a basic
             // nested-loops join.
-            return -1.0;
+            return cost1 + card1 * cost2 + card1 * card2;
         }
     }
 
@@ -162,6 +163,17 @@ public class JoinOptimizer {
                                                    Map<String, Integer> tableAliasToId) {
         int card = 1;
         // some code goes here
+        Integer table1Id = tableAliasToId.get(table1Alias);
+        Integer table2Id = tableAliasToId.get(table2Alias);
+        if (joinOp == Predicate.Op.EQUALS) {
+            if (t1pkey || t2pkey) {
+                card = Integer.max(card1, card2);
+            } else {
+                card = Integer.max(stats.get(Database.getCatalog().getTableName(table1Id)).totalTuples(), stats.get(Database.getCatalog().getTableName(table2Id)).totalTuples());
+            }
+        } else {
+            card = (int)(0.3 * card1 * card2);
+        }
         return card <= 0 ? 1 : card;
     }
 
@@ -227,8 +239,28 @@ public class JoinOptimizer {
         // should work.
 
         // some code goes here
+        PlanCache pc = new PlanCache();
+        for (int i = 1; i <= joins.size(); i ++ ) {
+            for (Set<LogicalJoinNode> set : enumerateSubsets(joins, i)) {
+                Iterator<LogicalJoinNode> iterator = set.iterator();
+                double bestCostSoFar = Double.MAX_VALUE;
+                while (iterator.hasNext()) {
+                    CostCard costCard = computeCostAndCardOfSubplan(stats, filterSelectivities, iterator.next(), set, bestCostSoFar, pc);
+                    if (costCard != null) {
+                        pc.addPlan(set, costCard.cost, costCard.card, costCard.plan);
+                        bestCostSoFar = costCard.cost;
+                    }
+                }
+                if (i == joins.size()) {
+                    if (explain) {
+                        printJoins(pc.getOrder(set), pc, stats, filterSelectivities);
+                    }
+                    return pc.getOrder(set);
+                }
+            }
+        }
         //Replace the following
-        return joins;
+        throw new ParsingException("error in orderJoins");
     }
 
     // ===================== Private Methods =================================
