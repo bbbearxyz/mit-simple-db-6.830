@@ -62,10 +62,18 @@ public class StringAggregator implements Aggregator {
     public void mergeTupleIntoGroup(Tuple tup) {
         // some code goes here
         Field field = tup.getField(gbField);
-        if (hash.containsKey(field)) {
-            hash.put(field, hash.get(field) + 1);
+        if (gbField != NO_GROUPING) {
+            if (hash.containsKey(field)) {
+                hash.put(field, hash.get(field) + 1);
+            } else {
+                hash.put(field, 1);
+            }
         } else {
-            hash.put(null, hash.get(null) + 1);
+            if (hash.containsKey(null)) {
+                hash.put(null, hash.get(null) + 1);
+            } else {
+                hash.put(null, 1);
+            }
         }
     }
 

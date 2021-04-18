@@ -39,7 +39,6 @@ public class LockingTest extends TestUtil.CreateHeapFile {
     for (int i = 0; i < 1025; ++i) {
       empty.insertTuple(tid, Utility.getHeapTuple(i, 2));
     }
-
     // if this fails, complain to the TA
     assertEquals(3, empty.numPages());
 
@@ -74,7 +73,8 @@ public class LockingTest extends TestUtil.CreateHeapFile {
       TransactionId tid1, PageId pid1, Permissions perm1,
       TransactionId tid2, PageId pid2, Permissions perm2,
       boolean expected) throws Exception {
-
+    System.out.println(pid1.getPageNumber());
+    System.out.println(pid2.getPageNumber());
     bp.getPage(tid1, pid1, perm1);
     grabLock(tid2, pid2, perm2, expected);
   }

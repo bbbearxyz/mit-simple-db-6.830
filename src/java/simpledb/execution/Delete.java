@@ -1,5 +1,6 @@
 package simpledb.execution;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import simpledb.common.Database;
 import simpledb.common.DbException;
 import simpledb.common.Type;
@@ -20,6 +21,14 @@ public class Delete extends Operator {
 
     private static final long serialVersionUID = 1L;
 
+    // tid
+    TransactionId tid;
+
+    // OpIterator
+    OpIterator child;
+
+    Boolean first;
+
     /**
      * Constructor specifying the transaction that this delete belongs to as
      * well as the child to read from.
@@ -31,23 +40,35 @@ public class Delete extends Operator {
      */
     public Delete(TransactionId t, OpIterator child) {
         // some code goes here
+        this.tid = t;
+        this.child = child;
+        this.first = false;
     }
 
     public TupleDesc getTupleDesc() {
         // some code goes here
-        return null;
+        Type[] type = new Type[1];
+        type[0] = Type.INT_TYPE;
+        TupleDesc td = new TupleDesc(type);
+        return td;
     }
 
     public void open() throws DbException, TransactionAbortedException {
         // some code goes here
+        super.open();
+        child.open();
     }
 
     public void close() {
         // some code goes here
+        super.close();
+        child.close();
     }
 
     public void rewind() throws DbException, TransactionAbortedException {
         // some code goes here
+        child.rewind();
+        first = false;
     }
 
     /**
@@ -61,18 +82,38 @@ public class Delete extends Operator {
      */
     protected Tuple fetchNext() throws TransactionAbortedException, DbException {
         // some code goes here
-        return null;
+        Type[] type = new Type[1];
+        type[0] = Type.INT_TYPE;
+        TupleDesc td = new TupleDesc(type);
+        Tuple tuple = new Tuple(td);
+        int count = 0;
+        try {
+            while (child.hasNext()) {
+                Tuple t = child.next();
+                Database.getBufferPool().deleteTuple(tid, t);
+                count ++;
+            }
+        } catch (IOException e) {
+            throw new DbException("error in fetchNext");
+        }
+        tuple.setField(0, new IntField(count));
+        if (first) return null;
+        first = true;
+        return tuple;
     }
 
     @Override
     public OpIterator[] getChildren() {
         // some code goes here
-        return null;
+        OpIterator[] children = new OpIterator[1];
+        children[0] = this.child;
+        return children;
     }
 
     @Override
     public void setChildren(OpIterator[] children) {
         // some code goes here
+        this.child = children[0];
     }
 
 }
